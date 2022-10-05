@@ -1,0 +1,260 @@
+@use "./variables/" as *;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin-inline: 10.3rem;
+  height: 100vh;
+  font-family: "Atkinson Hyperlegible";
+  position: relative;
+
+  .optionSection {
+    display: flex;
+    justify-content: space-between;
+    padding-block: 2rem 5rem;
+    width: 100%;
+    .title {
+      text-transform: lowercase;
+      font-weight: 700;
+      font-size: 2rem;
+      color: $active-color;
+    }
+    .selectButtons {
+      display: flex;
+      gap: 1rem;
+      button {
+        font-size: 1.25rem;
+        font-weight: 700;
+        padding-block: 0.5rem;
+        padding-inline: 1.75rem;
+        border-radius: 1.5rem;
+        border: none;
+      }
+      button:nth-of-type(1) {
+        color: $white-color;
+        background-color: $attention-color;
+      }
+      button:nth-of-type(2) {
+        color: $active-color;
+        background-color: $idle-color;
+      }
+    }
+  }
+
+  .sixBySix {
+    display: grid;
+    grid-template-columns: repeat(6, 15%);
+    gap: 1rem;
+    button {
+      background-color: $active-color;
+      color: white;
+      border: none;
+      font-size: 2.75rem;
+      height: 5rem;
+      width: 5rem;
+      cursor: pointer;
+      border-radius: 50%;
+    }
+    .inPlay {
+      background-color: $attention-color;
+    }
+    .played {
+      background-color: $idle-color;
+    }
+  }
+  .fourByFour {
+    display: grid;
+    grid-template-columns: repeat(4, 25%);
+    gap: 1rem;
+    button {
+      background-color: $active-color;
+      color: white;
+      border: none;
+      font-size: 3rem;
+      height: 6rem;
+      width: 6rem;
+      cursor: pointer;
+      border-radius: 50%;
+    }
+    .inPlay {
+      background-color: $attention-color;
+    }
+    .played {
+      background-color: $idle-color;
+    }
+
+    //   padding: 1rem;
+  }
+
+  .players {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    width: 100%;
+    margin-bottom: 5rem;
+    .currentPlayer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      .mobile {
+        display: none;
+      }
+      .desktop {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        border-radius: 1rem;
+        width: 100%;
+        background-color: $attention-color;
+        p {
+          color: $white-color;
+        }
+      }
+      p {
+        font-style: normal;
+        font-size: 18px;
+        line-height: 22px;
+      }
+      p:nth-of-type(1) {
+        font-size: 1.15rem;
+      }
+      p:nth-of-type(2) {
+        font-size: 2rem;
+        font-weight: 700;
+        color: $white-color;
+      }
+    }
+    .player {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      .mobile {
+        display: none;
+      }
+      .desktop {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        border-radius: 1rem;
+        width: 100%;
+        background-color: $gray-color;
+      }
+      p {
+        font-style: normal;
+        font-size: 18px;
+        line-height: 22px;
+      }
+      p:nth-of-type(1) {
+        font-size: 1.15rem;
+      }
+      p:nth-of-type(2) {
+        font-size: 2rem;
+        font-weight: 700;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 810px) {
+  .container {
+    margin-inline: 2.5rem;
+    .optionSection {
+      .title {
+        text-align: center;
+      }
+      .selectButtons {
+        text-align: center;
+        flex-direction: column;
+      }
+    }
+    .sixBySix {
+      button {
+        font-size: 1.75rem;
+        height: 4rem;
+        width: 4rem;
+      }
+    }
+    .fourByFour {
+      button {
+        font-size: 2.5rem;
+        height: 5rem;
+        width: 5rem;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 428px) {
+  .container {
+    margin-inline: 0.5rem;
+    .sixBySix {
+      gap: 0.5rem;
+      button {
+        font-size: 1.5rem;
+        height: 3.25rem;
+        width: 3.25rem;
+      }
+    }
+    .fourByFour {
+      gap: 0.5rem;
+      button {
+        font-size: 2rem;
+        height: 4rem;
+        width: 4rem;
+      }
+    }
+    .optionSection {
+      .selectButtons {
+        button:nth-of-type(1) {
+          color: $white-color;
+          background-color: $attention-color;
+        }
+        button:nth-of-type(2) {
+          color: $active-color;
+          background-color: $idle-color;
+        }
+      }
+    }
+    .players {
+      .player {
+        .desktop {
+          display: none;
+        }
+        .mobile {
+          display: flex;
+          justify-content: space-around;
+          align-items: center;
+          border-radius: 1rem;
+          width: 100%;
+          background-color: $gray-color;
+        }
+        .currentTurn {
+          display: none;
+        }
+      }
+      .currentPlayer {
+        .desktop {
+          display: none;
+        }
+        .mobile {
+          display: flex;
+          justify-content: space-around;
+          align-items: center;
+          border-radius: 1rem;
+          width: 100%;
+          background-color: $attention-color;
+          p {
+            color: $white-color;
+          }
+        }
+        .currentTurn {
+          display: none;
+        }
+      }
+    }
+  }
+}

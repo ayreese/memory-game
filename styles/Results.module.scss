@@ -1,0 +1,133 @@
+@use "./variables/" as *;
+
+.container {
+  position: absolute;
+  z-index: 10;
+  background-color: grey;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  p {
+    margin-block: 1rem;
+  }
+  .card {
+    margin-inline: auto;
+    margin-block: auto;
+    border-radius: 1rem;
+    padding: 3rem;
+    background-color: $white-color;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    .winnerHighLight {
+      background-color: $bg-color;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-radius: 0.75rem;
+      margin-bottom: 1rem;
+      width: 100%;
+      padding-inline: 2rem;
+      p:nth-of-type(1) {
+        font-family: "Atkinson Hyperlegible";
+        font-style: normal;
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 22px;
+
+        color: #152938;
+      }
+
+      p:nth-of-type(2) {
+        font-family: "Atkinson Hyperlegible";
+        font-style: normal;
+        font-weight: 700;
+        font-size: 32px;
+        line-height: 40px;
+        text-align: right;
+        color: #fcfcfc;
+      }
+    }
+    .winnerResults {
+      color: $white-color;
+    }
+    .winner {
+      font-family: "Atkinson Hyperlegible";
+      font-style: normal;
+      font-weight: 700;
+      font-size: 48px;
+      line-height: 60px;
+      text-align: center;
+      text-transform: capitalize;
+      color: #152938;
+    }
+    .tagLine {
+      font-family: "Atkinson Hyperlegible";
+      font-style: normal;
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 22px;
+      text-align: center;
+      margin-bottom: 0;
+      color: #7191a5;
+    }
+    .playerResult {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: $idle-color;
+      border-radius: 0.75rem;
+      margin-bottom: 1rem;
+      width: 100%;
+      padding-inline: 2rem;
+      p:nth-of-type(1) {
+        font-family: "Atkinson Hyperlegible";
+        font-style: normal;
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 22px;
+
+        color: #152938;
+      }
+
+      p:nth-of-type(2) {
+        font-family: "Atkinson Hyperlegible";
+        font-style: normal;
+        font-weight: 700;
+        font-size: 32px;
+        line-height: 40px;
+        text-align: right;
+        color: #fcfcfc;
+      }
+    }
+    .buttons {
+      display: flex;
+      gap: 1rem;
+      button:nth-of-type(1) {
+        background-color: $attention-color;
+      }
+      button {
+        padding-block: 0.6rem;
+        border-radius: 5rem;
+        border: none;
+        font-family: "Atkinson Hyperlegible";
+        font-style: normal;
+        font-weight: 700;
+        font-size: 26px;
+        line-height: 32px;
+        text-align: center;
+        background-color: $idle-color;
+        color: $white-color;
+        margin: 1rem;
+        min-width: 250px;
+        width: 100%;
+      }
+      button:hover {
+        background-color: $hover-color;
+        cursor: pointer;
+      }
+    }
+  }
+}
