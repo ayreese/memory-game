@@ -33,6 +33,7 @@ const Results = ({ players, newGame, restart }: ResultProps) => {
         {players.map((player) => {
           return (
             <div
+              key={player.player}
               className={
                 test(player) ? styles.winnerHighLight : styles.playerResult
               }>
