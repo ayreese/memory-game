@@ -128,9 +128,6 @@ const GameBoard = () => {
                 onClick={() => {
                   console.log(players), round(btn);
                 }}>
-                {inPlay!.some((item) => item === btn) && (
-                  <img src={btn.icon} alt="" />
-                )}
                 {(inPlay!.some((item) => item === btn) && (
                   <img src={btn.icon} alt="" />
                 )) ||

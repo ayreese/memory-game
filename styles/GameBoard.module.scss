@@ -56,6 +56,9 @@
       width: 5rem;
       cursor: pointer;
       border-radius: 50%;
+      img {
+        width: 3rem;
+      }
     }
     .inPlay {
       background-color: $attention-color;
@@ -77,6 +80,9 @@
       width: 6rem;
       cursor: pointer;
       border-radius: 50%;
+      img {
+        width: 3rem;
+      }
     }
     .inPlay {
       background-color: $attention-color;
@@ -197,6 +203,9 @@
         font-size: 1.5rem;
         height: 3.25rem;
         width: 3.25rem;
+        img {
+          width: 2rem;
+        }
       }
     }
     .fourByFour {
@@ -205,6 +214,9 @@
         font-size: 2rem;
         height: 4rem;
         width: 4rem;
+        img {
+          width: 2.5rem;
+        }
       }
     }
     .optionSection {
