@@ -1,4 +1,5 @@
-@use "./variables/" as *;
+@use "../styles/variables" as *;
+@use "../styles/mixins" as *;
 
 .container {
   position: absolute;
@@ -8,51 +9,34 @@
   height: 100vh;
   display: flex;
   justify-content: center;
+
   p {
     margin-block: 1rem;
   }
+
   .card {
-    margin-inline: auto;
+    //    margin-inline: auto;
     margin-block: auto;
+    box-sizing: border-box;
     border-radius: 1rem;
+    max-width: 1080px;
     padding: 3rem;
     background-color: $white-color;
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
+
+
     .winnerHighLight {
       background-color: $bg-color;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-radius: 0.75rem;
-      margin-bottom: 1rem;
-      width: 100%;
-      padding-inline: 2rem;
-      p:nth-of-type(1) {
-        font-family: "Atkinson Hyperlegible";
-        font-style: normal;
-        font-weight: 700;
-        font-size: 18px;
-        line-height: 22px;
-
-        color: #152938;
-      }
-
-      p:nth-of-type(2) {
-        font-family: "Atkinson Hyperlegible";
-        font-style: normal;
-        font-weight: 700;
-        font-size: 32px;
-        line-height: 40px;
-        text-align: right;
-        color: #fcfcfc;
-      }
+      @include player-result-container
     }
+
     .winnerResults {
       color: $white-color;
     }
+
     .winner {
       font-family: "Atkinson Hyperlegible";
       font-style: normal;
@@ -63,6 +47,7 @@
       text-transform: capitalize;
       color: #152938;
     }
+
     .tagLine {
       font-family: "Atkinson Hyperlegible";
       font-style: normal;
@@ -73,57 +58,30 @@
       margin-bottom: 0;
       color: #7191a5;
     }
+
     .playerResult {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+
       background-color: $idle-color;
-      border-radius: 0.75rem;
-      margin-bottom: 1rem;
-      width: 100%;
-      padding-inline: 2rem;
-      p:nth-of-type(1) {
-        font-family: "Atkinson Hyperlegible";
-        font-style: normal;
-        font-weight: 700;
-        font-size: 18px;
-        line-height: 22px;
-
-        color: #152938;
-      }
-
-      p:nth-of-type(2) {
-        font-family: "Atkinson Hyperlegible";
-        font-style: normal;
-        font-weight: 700;
-        font-size: 32px;
-        line-height: 40px;
-        text-align: right;
-        color: #fcfcfc;
-      }
+      @include player-result-container;
     }
+
     .buttons {
       display: flex;
       gap: 1rem;
+      width: 100%;
+
       button:nth-of-type(1) {
         background-color: $attention-color;
       }
+
       button {
-        padding-block: 0.6rem;
-        border-radius: 5rem;
-        border: none;
-        font-family: "Atkinson Hyperlegible";
-        font-style: normal;
-        font-weight: 700;
-        font-size: 26px;
-        line-height: 32px;
-        text-align: center;
-        background-color: $idle-color;
-        color: $white-color;
-        margin: 1rem;
-        min-width: 250px;
+        @include Button;
+        font-size: 20px;
         width: 100%;
+        white-space: nowrap;
+
       }
+
       button:hover {
         background-color: $hover-color;
         cursor: pointer;
