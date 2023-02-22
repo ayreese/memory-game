@@ -1,0 +1,89 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+
+.game-selection-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+  background: $bg-color;
+}
+
+.game-selection-container .title {
+  font-family: $font-family;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 50px;
+  color: white;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.game-selection-container .card {
+  background: white;
+  border-radius: 1.25rem;
+  margin-inline: auto;
+  width: min(1080px, 100% - 3rem);
+}
+
+.game-selection-container .card .selectionSection {
+  @include P;
+  margin: 3rem;
+  color: $hover-color;
+
+  .buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .buttons .selectedBtn {
+    background-color: $active-color;
+
+    &:hover {
+      background-color: $active-color;
+    }
+  }
+
+  .buttons .startBtn {
+    background-color: $attention-color;
+
+    &:hover {
+      background-color: $attention-color;
+    }
+  }
+
+  .buttons button {
+    padding-block: 0.6rem;
+    border-radius: 5rem;
+    border: none;
+    font-family: $font-family;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 32px;
+    text-align: center;
+    background-color: $idle-color;
+    color: $white-color;
+    width: 100%;
+
+    button:hover {
+      background-color: $hover-color;
+      cursor: pointer;
+    }
+  }
+
+
+}
+
+@media only screen and (max-width: 600px) {
+  .game-selection-container .card .selectionSection {
+      margin: 2rem;
+    .buttons button {
+        padding-block: .1rem;
+      font-size: 16px;
+    }
+  }
+}

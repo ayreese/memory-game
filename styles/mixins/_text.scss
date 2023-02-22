@@ -1,0 +1,10 @@
+@use "../variables/" as *;
+
+@mixin P {
+  font-family: "Atkinson Hyperlegible";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 25px;
+  color: #7191a5;
+}
