@@ -1,29 +1,32 @@
-@use "./variables/" as *;
+@use "./variables" as *;
+@use "./mixins" as *;
 
 .container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  margin-inline: 10.3rem;
-  height: 100vh;
-  font-family: "Atkinson Hyperlegible";
-  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  gap: 5rem;
+  margin-inline: auto;
+  box-sizing: border-box;
+  width: min(1080px, 100% - 3rem);
+  margin-top: 8rem;
 
   .optionSection {
     display: flex;
     justify-content: space-between;
-    padding-block: 2rem 5rem;
     width: 100%;
+
     .title {
       text-transform: lowercase;
       font-weight: 700;
       font-size: 2rem;
       color: $active-color;
     }
+
     .selectButtons {
       display: flex;
       gap: 1rem;
+
       button {
         font-size: 1.25rem;
         font-weight: 700;
@@ -32,10 +35,12 @@
         border-radius: 1.5rem;
         border: none;
       }
+
       button:nth-of-type(1) {
         color: $white-color;
         background-color: $attention-color;
       }
+
       button:nth-of-type(2) {
         color: $active-color;
         background-color: $idle-color;
@@ -45,8 +50,9 @@
 
   .sixBySix {
     display: grid;
-    grid-template-columns: repeat(6, 15%);
+    grid-template-columns: repeat(6, 1fr);
     gap: 1rem;
+
     button {
       background-color: $active-color;
       color: white;
@@ -56,21 +62,26 @@
       width: 5rem;
       cursor: pointer;
       border-radius: 50%;
+
       img {
         width: 3rem;
       }
     }
+
     .inPlay {
       background-color: $attention-color;
     }
+
     .played {
       background-color: $idle-color;
     }
   }
+
   .fourByFour {
     display: grid;
-    grid-template-columns: repeat(4, 25%);
+    grid-template-columns: repeat(4, 1fr);
     gap: 1rem;
+
     button {
       background-color: $active-color;
       color: white;
@@ -80,18 +91,20 @@
       width: 6rem;
       cursor: pointer;
       border-radius: 50%;
+
       img {
         width: 3rem;
       }
     }
+
     .inPlay {
       background-color: $attention-color;
     }
+
     .played {
       background-color: $idle-color;
     }
 
-    //   padding: 1rem;
   }
 
   .players {
@@ -100,14 +113,17 @@
     gap: 1rem;
     width: 100%;
     margin-bottom: 5rem;
+
     .currentPlayer {
       display: flex;
       flex-direction: column;
       align-items: center;
       width: 100%;
+
       .mobile {
         display: none;
       }
+
       .desktop {
         display: flex;
         justify-content: space-around;
@@ -115,32 +131,39 @@
         border-radius: 1rem;
         width: 100%;
         background-color: $attention-color;
+
         p {
           color: $white-color;
         }
       }
+
       p {
         font-style: normal;
         font-size: 18px;
         line-height: 22px;
       }
+
       p:nth-of-type(1) {
         font-size: 1.15rem;
       }
+
       p:nth-of-type(2) {
         font-size: 2rem;
         font-weight: 700;
         color: $white-color;
       }
     }
+
     .player {
       display: flex;
       flex-direction: column;
       align-items: center;
       width: 100%;
+
       .mobile {
         display: none;
       }
+
       .desktop {
         display: flex;
         justify-content: space-around;
@@ -149,14 +172,17 @@
         width: 100%;
         background-color: $gray-color;
       }
+
       p {
         font-style: normal;
         font-size: 18px;
         line-height: 22px;
       }
+
       p:nth-of-type(1) {
         font-size: 1.15rem;
       }
+
       p:nth-of-type(2) {
         font-size: 2rem;
         font-weight: 700;
@@ -165,108 +191,89 @@
   }
 }
 
-@media only screen and (max-width: 810px) {
+
+@media only screen and (max-width: 600px) {
   .container {
-    margin-inline: 2.5rem;
+      margin-top: 2.8rem;
+
     .optionSection {
       .title {
         text-align: center;
       }
+
       .selectButtons {
         text-align: center;
         flex-direction: column;
       }
     }
-    .sixBySix {
-      button {
-        font-size: 1.75rem;
-        height: 4rem;
-        width: 4rem;
-      }
-    }
-    .fourByFour {
-      button {
-        font-size: 2.5rem;
-        height: 5rem;
-        width: 5rem;
-      }
-    }
-  }
-}
 
-@media only screen and (max-width: 428px) {
-  .container {
-    margin-inline: 0.5rem;
     .sixBySix {
       gap: 0.5rem;
+
       button {
         font-size: 1.5rem;
         height: 3.25rem;
         width: 3.25rem;
+
         img {
           width: 2rem;
         }
       }
     }
+
     .fourByFour {
       gap: 0.5rem;
+
       button {
         font-size: 2rem;
         height: 4rem;
         width: 4rem;
+
         img {
           width: 2.5rem;
         }
       }
     }
-    .optionSection {
-      .selectButtons {
-        button:nth-of-type(1) {
-          color: $white-color;
-          background-color: $attention-color;
-        }
-        button:nth-of-type(2) {
-          color: $active-color;
-          background-color: $idle-color;
-        }
+
+    .optionSection .selectButtons {
+      button:nth-of-type(1) {
+        color: $white-color;
+        background-color: $attention-color;
+      }
+
+      button:nth-of-type(2) {
+        color: $active-color;
+        background-color: $idle-color;
+      }
+
+    }
+
+    .players .player .desktop {
+      display: none;
+    }
+
+    .players .player .mobile {
+      @include score-card;
+      background-color: $gray-color;
+
+      p {
+        font-size: 1.5rem;
       }
     }
-    .players {
-      .player {
-        .desktop {
-          display: none;
-        }
-        .mobile {
-          display: flex;
-          justify-content: space-around;
-          align-items: center;
-          border-radius: 1rem;
-          width: 100%;
-          background-color: $gray-color;
-        }
-        .currentTurn {
-          display: none;
-        }
-      }
-      .currentPlayer {
-        .desktop {
-          display: none;
-        }
-        .mobile {
-          display: flex;
-          justify-content: space-around;
-          align-items: center;
-          border-radius: 1rem;
-          width: 100%;
-          background-color: $attention-color;
-          p {
-            color: $white-color;
-          }
-        }
-        .currentTurn {
-          display: none;
-        }
+
+    .players .currentPlayer .desktop {
+      display: none;
+    }
+
+    .players .currentPlayer .mobile {
+      @include score-card;
+      background-color: $attention-color;
+
+      p {
+        color: $white-color;
+        font-size: 1.5rem;
       }
     }
+
   }
 }

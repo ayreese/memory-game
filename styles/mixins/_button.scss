@@ -30,7 +30,7 @@
     font-family: "Atkinson Hyperlegible";
     font-style: normal;
     font-weight: 700;
-//    font-size: 18px;
+    font-size: 18px;
     line-height: 22px;
     color: #152938;
   }
@@ -39,9 +39,25 @@
     font-family: "Atkinson Hyperlegible";
     font-style: normal;
     font-weight: 700;
-//    font-size: 32px;
+    font-size: 32px;
     line-height: 40px;
     text-align: right;
     color: #fcfcfc;
   }
+  @media screen and (max-width: 600px) {
+    p:nth-of-type(1) {
+      font-size: 16px;
+    }
+    p:nth-of-type(2) {
+      font-size: 20px;
+    }
+  }
+}
+
+@mixin score-card {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 1rem;
+  width: 100%;
 }

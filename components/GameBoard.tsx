@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "../styles/GameBoard.module.scss";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 import { GamePiece, GameSelections, Player } from "../interface/interfaces";
@@ -46,17 +46,17 @@ const GameBoard = () => {
         setPlayed([...played, ...inPlay]);
         setInPlay([]);
         // Persist data through refresh
-        // setValue((current) => {
-        //   return {
-        //     ...current,
-        //     theme,
-        //     players: [...players],
-        //     grid,
-        //     inPlay,
-        //     played: [...played],
-        //     turn,
-        //   };
-        // });
+         setValue((current) => {
+           return {
+             ...current,
+             theme,
+             players: [...players],
+             grid,
+             inPlay,
+             played: [...played],
+             turn,
+           };
+         });
       } else {
         console.log(players);
         setTimeout(() => {
@@ -99,86 +99,99 @@ const GameBoard = () => {
   }, [[...played]]);
 
   return (
-    <div className={styles.container}>
-      {gameOver && (
+    <>
+      {gameOver ? (
         <Results players={players} newGame={newGame} restart={restart} />
-      )}
-      <div className={styles.optionSection}>
-        <div className={styles.title}>Memory</div>
-        <div className={styles.selectButtons}>
-          <button onClick={() => restart()}>Restart</button>
-          <button onClick={() => newGame()}>New Game</button>
-        </div>
-      </div>
-      <div className={grid?.length! < 36 ? styles.fourByFour : styles.sixBySix}>
-        {grid?.map((btn: GamePiece) => {
-          const pieceInPlay = inPlay!.some((item) => item === btn);
-          const piecePlayed = played!.some((item) => item === btn);
-          if (theme) {
-            return (
-              <button
-                className={
-                  inPlay!.some((item) => item === btn)
-                    ? styles.inPlay
-                    : "" || played!.some((item) => item === btn)
-                    ? styles.played
-                    : ""
-                }
-                key={btn.index}
-                onClick={() => {
-                  console.log(players), round(btn);
-                }}>
-                {(inPlay!.some((item) => item === btn) && (
-                  <img src={btn.icon} alt="" />
-                )) ||
-                  (played!.some((item) => item === btn) && (
-                    <img src={btn.icon} alt="" />
-                  ))}
-              </button>
-            );
-          } else {
-            return (
-              <button
-                key={btn.index}
-                className={
-                  inPlay!.some((item) => item === btn)
-                    ? styles.inPlay
-                    : "" || played!.some((item) => item === btn)
-                    ? styles.played
-                    : ""
-                }
-                onClick={() => {
-                  round(btn);
-                }}>
-                {(pieceInPlay && btn.num) || (piecePlayed && btn.num)}
-              </button>
-            );
-          }
-        })}
-      </div>
-      <div className={styles.players}>
-        {players?.map((player) => {
-          return (
-            <div
-              key={player.player}
-              className={
-                player === currentPlayer ? styles.currentPlayer : styles.player
-              }>
-              <div className={styles.desktop}>
-                <p>Player {player.player}</p>
-                <p>{player.score}</p>
-              </div>
-              <div className={styles.mobile}>
-                <p>P {player.player}</p>
-              </div>
-              {player === currentPlayer && (
-                <p className={styles.currentTurn}>current turn</p>
-              )}
+      ) : (
+        <div className={styles.container}>
+          {gameOver && (
+            <Results players={players} newGame={newGame} restart={restart} />
+          )}
+          <div className={styles.optionSection}>
+            <div className={styles.title}>Memory</div>
+            <div className={styles.selectButtons}>
+              <button onClick={() => restart()}>Restart</button>
+              <button onClick={() => newGame()}>New Game</button>
             </div>
-          );
-        })}
-      </div>
-    </div>
+          </div>
+          <div
+            className={
+              grid?.length! < 36 ? styles.fourByFour : styles.sixBySix
+            }>
+            {grid?.map((btn: GamePiece) => {
+              const pieceInPlay = inPlay!.some((item) => item === btn);
+              const piecePlayed = played!.some((item) => item === btn);
+              if (theme) {
+                return (
+                  <button
+                    className={
+                      inPlay!.some((item) => item === btn)
+                        ? styles.inPlay
+                        : "" || played!.some((item) => item === btn)
+                          ? styles.played
+                          : ""
+                    }
+                    key={btn.index}
+                    onClick={() => {
+                      console.log(players), round(btn);
+                    }}>
+                    {(inPlay!.some((item) => item === btn) && (
+                        <img src={btn.icon} alt="" />
+                      )) ||
+                      (played!.some((item) => item === btn) && (
+                        <img src={btn.icon} alt="" />
+                      ))}
+                  </button>
+                );
+              } else {
+                return (
+                  <button
+                    key={btn.index}
+                    className={
+                      inPlay!.some((item) => item === btn)
+                        ? styles.inPlay
+                        : "" || played!.some((item) => item === btn)
+                          ? styles.played
+                          : ""
+                    }
+                    onClick={() => {
+                      round(btn);
+                    }}>
+                    {(pieceInPlay && btn.num) || (piecePlayed && btn.num)}
+                  </button>
+                );
+              }
+            })}
+          </div>
+          <div className={styles.players}>
+            {players?.map((player) => {
+              return (
+                <div
+                  key={player.player}
+                  className={
+                    player === currentPlayer
+                      ? styles.currentPlayer
+                      : styles.player
+                  }>
+                  <div className={styles.desktop}>
+                    <p>Player {player.player}</p>
+                    <p>{player.score}</p>
+                  </div>
+                  <div className={styles.mobile}>
+                    <p>P {player.player}</p>
+                    <p>{player.score}</p>
+                  </div>
+                  {player === currentPlayer && (
+                    <p className={styles.currentTurn}>current turn</p>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      )}
+    </>
+
   );
 };
 
