@@ -4,7 +4,7 @@ Memory Game is a simple web-based game where players try to match pairs of cards
 
 ## Demo
 
-You can play the game online here.
+You can play the game online [here](https://memory-game-khaki-seven.vercel.app).
 
 Technologies Used
 
